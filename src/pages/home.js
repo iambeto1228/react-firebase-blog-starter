@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { getFirebase } from "../firebase";
 
 const Home = () => {
   const blogPosts = [
