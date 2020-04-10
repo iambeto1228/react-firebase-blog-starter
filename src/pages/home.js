@@ -4,10 +4,10 @@ import { getFirebase } from "../firebase";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-  const [blogPosts, setblogPosts] = useState([]);
+  const [blogPosts, setBlogPosts] = useState([]);
 
-  if (loading && !blogPosts.length) {
-    getFirebase()
+if (loading && !blogPosts.length) {
+  getFirebase()
     .database()
     .ref("/posts")
     .orderByChild("dateFormatted")
@@ -19,15 +19,15 @@ const Home = () => {
         posts.push(snapshotVal[slug]);
       }
 
-      const newestFirst = posts.reverse(),
-      setblogPosts(newestFirst);
+      const newestFirst = posts.reverse();
+      setBlogPosts(newestFirst);
       setLoading(false);
     });
-  }
+}
 
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
+if (loading) {
+  return <h1>Loading...</h1>;
+}
 
   return (
     <>
